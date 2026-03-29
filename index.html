@@ -1,42 +1,51 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Login – GitHub Issues Tracker</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body class="login-body">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login – GitHub Issues Tracker</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body class="login-body">
+    <div class="login-card">
+      <img src="github-logo.png" alt="GitHub" class="login-logo" />
+      <h2>Sign in to manage your issues</h2>
 
-<div class="login-card">
-  <img src="github-logo.png" alt="GitHub" class="login-logo" />
-  <h2>Sign in to manage your issues</h2>
+      <form id="loginForm">
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input
+            type="text"
+            id="username"
+            placeholder="Enter Username"
+            required
+          />
+          <p class="form-hint">Default: admin</p>
+        </div>
 
-  <form id="loginForm">
-    <div class="form-group">
-      <label for="username">Username</label>
-      <input type="text" id="username" placeholder="Enter Username" required />
-      <p class="form-hint">Default: admin</p>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input
+            type="password"
+            id="password"
+            placeholder="Enter Password"
+            required
+          />
+          <p class="form-hint">Default: admin123</p>
+        </div>
+
+        <button type="submit" class="btn-signin">Sign In</button>
+      </form>
+
+      <div class="divider">OR</div>
+
+      <div class="demo-box">
+        <p>Demo Credentials:</p>
+        <p><strong>Username:</strong> admin</p>
+        <p><strong>Password:</strong> admin123</p>
+      </div>
     </div>
 
-    <div class="form-group">
-      <label for="password">Password</label>
-      <input type="password" id="password" placeholder="Enter Password" required />
-      <p class="form-hint">Default: admin123</p>
-    </div>
-
-    <button type="submit" class="btn-signin">Sign In</button>
-  </form>
-
-  <div class="divider">OR</div>
-
-  <div class="demo-box">
-    <p>Demo Credentials:</p>
-    <p><strong>Username:</strong> admin</p>
-    <p><strong>Password:</strong> admin123</p>
-  </div>
-</div>
-
-<script src="login.js"></script>
-</body>
+    <script src="login.js"></script>
+  </body>
 </html>
