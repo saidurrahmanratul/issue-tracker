@@ -1,7 +1,7 @@
 let allIssues = [];
 
 const container = document.getElementById("issuesContainer");
-
+const searchInput = document.getElementById("searchInput");
 const tabs = document.querySelectorAll(".tab");
 
 if (!localStorage.getItem("isLoggedIn")) location.href = "index.html";
@@ -19,6 +19,28 @@ async function fetchIssues() {
   const data = await res.json();
   allIssues = data.data;
   render(allIssues);
+}
+
+function priorityBadge(p = "") {
+  const level = p.toLowerCase();
+  return `<span class="priority-badge ${level}">${p.toUpperCase()}</span>`;
+}
+
+function tagChip(label = "") {
+  const l = label.toLowerCase();
+  const cls = l.includes("bug")
+    ? "bug"
+    : l.includes("help")
+      ? "help"
+      : "enhancement";
+  const icon = cls === "bug" ? "🐛" : cls === "help" ? "🙋" : "✨";
+  return `<span class="tag ${cls}">${icon} ${label.toUpperCase()}</span>`;
+}
+
+function statusIcon(status = "") {
+  return status.toLowerCase() === "open"
+    ? `<span style="color:#16a34a;font-size:16px;">✔</span>`
+    : `<span style="color:#7c3aed;font-size:16px;">✔</span>`;
 }
 
 function render(data) {
@@ -68,6 +90,19 @@ searchInput.addEventListener("input", () => {
     const d = await res.json();
     render(d.data || []);
   }, 400);
+});
+
+tabs.forEach((tab) => {
+  tab.addEventListener("click", () => {
+    tabs.forEach((t) => t.classList.remove("active"));
+    tab.classList.add("active");
+    const s = tab.dataset.status;
+    render(
+      s === "all"
+        ? allIssues
+        : allIssues.filter((i) => i.status.toLowerCase() === s),
+    );
+  });
 });
 
 fetchIssues();
