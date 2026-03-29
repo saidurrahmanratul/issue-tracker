@@ -6,5 +6,30 @@
     <title>GitHub Issues Tracker</title>
     <link rel="stylesheet" href="style.css" />
   </head>
-  <body></body>
+  <body>
+    <nav class="navbar">
+      <a class="nav-brand" href="#">
+        <img src="github-logo.png" alt="GitHub" />
+        GitHub Issues Tracker
+      </a>
+      <div class="nav-right">
+        <div class="search-box">
+          <svg
+            width="14"
+            height="14"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+          >
+            <circle cx="11" cy="11" r="8" />
+            <path d="m21 21-4.35-4.35" />
+          </svg>
+          <input type="text" id="searchInput" placeholder="Search issues..." />
+        </div>
+        <button class="btn-new" id="newIssueBtn">+ New Issue</button>
+        <button class="btn-logout" id="logoutBtn">Sign Out</button>
+      </div>
+    </nav>
+  </body>
 </html>
