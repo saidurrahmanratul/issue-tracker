@@ -4,6 +4,7 @@ const container = document.getElementById("issuesContainer");
 const searchInput = document.getElementById("searchInput");
 const tabs = document.querySelectorAll(".tab");
 const modal = document.getElementById("modal");
+const modalBody = document.getElementById("modalBody");
 
 if (!localStorage.getItem("isLoggedIn")) location.href = "index.html";
 
