@@ -1,0 +1,146 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --primary: #5b21b6;
+  --primary-btn: #4f46e5;
+  --bg: #f3f4f6;
+  --white: #ffffff;
+  --border: #e5e7eb;
+  --text: #111827;
+  --muted: #6b7280;
+  --open-color: #16a34a;
+  --closed-color: #7c3aed;
+  --high: #ef4444;
+  --medium: #f59e0b;
+  --low: #9ca3af;
+  --tag-bug-bg: #fee2e2;
+  --tag-bug-text: #dc2626;
+  --tag-help-bg: #fef9c3;
+  --tag-help-text: #b45309;
+  --tag-enh-bg: #dcfce7;
+  --tag-enh-text: #15803d;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+}
+
+body.login-body {
+  background: #f3f4f6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+.login-card {
+  background: var(--white);
+  border-radius: 12px;
+  padding: 40px 36px;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+  text-align: center;
+}
+
+.login-logo {
+  width: 56px;
+  height: 56px;
+  margin: 0 auto 16px;
+}
+
+.login-card h2 {
+  font-size: 15px;
+  color: var(--muted);
+  font-weight: 400;
+  margin-bottom: 28px;
+}
+
+.form-group {
+  text-align: left;
+  margin-bottom: 18px;
+}
+.form-group label {
+  display: block;
+  font-size: 13px;
+  font-weight: 500;
+  margin-bottom: 6px;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.form-group input:focus {
+  border-color: var(--primary-btn);
+}
+.form-hint {
+  font-size: 12px;
+  color: var(--primary-btn);
+  margin-top: 4px;
+}
+
+.btn-signin {
+  width: 100%;
+  padding: 11px;
+  background: var(--primary-btn);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 4px;
+  transition: background 0.2s;
+}
+
+.btn-signin:hover {
+  background: #4338ca;
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 20px 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+.divider::before,
+.divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+.demo-box {
+  background: #f9fafb;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 14px;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.demo-box p {
+  margin-bottom: 6px;
+}
+.demo-box strong {
+  color: var(--text);
+}
