@@ -3,6 +3,7 @@ let allIssues = [];
 const container = document.getElementById("issuesContainer");
 const searchInput = document.getElementById("searchInput");
 const tabs = document.querySelectorAll(".tab");
+const modal = document.getElementById("modal");
 
 if (!localStorage.getItem("isLoggedIn")) location.href = "index.html";
 
@@ -103,6 +104,51 @@ tabs.forEach((tab) => {
         : allIssues.filter((i) => i.status.toLowerCase() === s),
     );
   });
+});
+
+async function openModal(id) {
+  modal.classList.remove("hidden");
+  modalBody.innerHTML = `<div class="loader"></div>`;
+
+  const res = await fetch(
+    `https://phi-lab-server.vercel.app/api/v1/lab/issue/${id}`,
+  );
+  const d = await res.json();
+  const i = d.data;
+
+  const tags = (i.labels || []).map(tagChip).join("");
+  const date = new Date(i.createdAt).toLocaleDateString("en-GB");
+  const statusCls = (i.status || "open").toLowerCase();
+  const priority = (i.priority || "low").toUpperCase();
+  const priorityCls = (i.priority || "low").toLowerCase();
+
+  modalBody.innerHTML = `
+    <h2 class="modal-title">${i.title}</h2>
+    <div class="modal-meta">
+      <span class="status-pill ${statusCls}">${i.status}</span>
+      <span>Opened by ${i.author || "unknown"}</span>
+      <span>•</span>
+      <span>${date}</span>
+    </div>
+    <div class="modal-tags">${tags}</div>
+    <p class="modal-desc">${i.description}</p>
+    <div class="modal-info">
+      <div class="modal-info-item">
+        <label>Assignee:</label>
+        <span>${i.assignee || i.author || "—"}</span>
+      </div>
+      <div class="modal-info-item">
+        <label>Priority:</label>
+        <span class="priority-badge ${priorityCls}">${priority}</span>
+      </div>
+    </div>`;
+}
+
+document
+  .getElementById("closeModal")
+  .addEventListener("click", () => modal.classList.add("hidden"));
+modal.addEventListener("click", (e) => {
+  if (e.target === modal) modal.classList.add("hidden");
 });
 
 fetchIssues();
